@@ -16,7 +16,7 @@ exports.normal = function normal() {
 
 exports.warn = function warn() {
   let msg = format.apply(format, arguments)
-
+  
   console.log(chalk.yellow(prefix), sep, msg) // eslint-disable-line
 }
 
