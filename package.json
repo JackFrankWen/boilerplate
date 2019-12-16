@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production",
+    "precommit": "lint-staged",
     "dev": "node script/dev.js"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css,md}": ["eslint --fix src", "git add"]
   },
   "keywords": [],
   "author": "",
@@ -18,8 +22,14 @@
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "express": "^4.17.1",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
