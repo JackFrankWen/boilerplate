@@ -3,6 +3,23 @@
 const path = require('path')
 
 const util = require('./util.js')
+const webpackDevServer = require('./webpackDevServer.js')
+
+
+function formulaWebpackConfig(config) {
+  return config;
+}
+
+function createSever(config, buildEnv, target) {
+  if (config === undefined) {
+    throw new Error('Parameter \'option\' is lack.')
+  }
+  const option = {
+    serverConfig: {port: 1234, mock: true}
+  }
+  option.webpackConfig = formulaWebpackConfig(config, buildEnv, target)
+  return new webpackDevServer(option)
+}
 /*
 TARGET: {
     BROWSER: 'browser',
@@ -32,7 +49,7 @@ process.env.NODE_ENV = buildEnv /* re-write process env */
 const config = util.getConfigFile(path.join(process.cwd(), './webpack.config.js'))
 
 console.log(config, 'config')
-// const server = webpackDevServer(config, buildEnv, target)
+const server = createSever(config, buildEnv, target)
 
 
-// server.run();
+server.run();
